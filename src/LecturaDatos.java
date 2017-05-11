@@ -42,7 +42,7 @@ public class LecturaDatos {
         java.util.Scanner scanner = new Scanner(System.in);
         Logger p3 = new Logger();
         System.out.println("Write your search term. \n\tUse [exit] to finalize the program:\n");
-        String request = scanner.next();
+        String request = scanner.nextLine();
         request= request.toLowerCase();
         if(request.contentEquals("exit")){
             return false;
