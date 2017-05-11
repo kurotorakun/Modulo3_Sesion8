@@ -23,7 +23,7 @@ public class LecturaDatos {
             while (s.hasNext()) {
                 String formattedText = s.next();
                 formattedText = formattedText.toLowerCase(); // Error control
-                System.out.println(formattedText);
+                //System.out.println(formattedText);
                 String[] elements = formattedText.split(",");
                 String countryKey = elements[0].replace("\"","");
                 countries.put(countryKey,elements[1].replace("\"","") +","+ elements[5].replace("\"",""));
