@@ -12,22 +12,24 @@ public class LecturaDatos {
         Map<String,String> countries = new HashMap<String,String>();
         Scanner s =null;
         try {
-            // NEXT LINES can be helpful to improve.
-            //String current = new java.io.File( "." ).getCanonicalPath();
-            //System.out.println("Current dir: "+current);
-            //File file=new File("./paises_del_mundo[S8].txt");
-            //System.out.println("- "+ file.getAbsolutePath()+ "| "+ file.exists());
-
-            s = new Scanner(new BufferedReader(new FileReader("./paises_del_mundo_[S8].txt")));
-            s.useDelimiter("\r\n");
-            while (s.hasNext()) {
-                String formattedText = s.next();
-                formattedText = formattedText.toLowerCase(); // Error control
-                //System.out.println(formattedText);
-                String[] elements = formattedText.split(",");
-                String countryKey = elements[0].replace("\"","");
-                countries.put(countryKey,elements[1].replace("\"","") +","+ elements[5].replace("\"",""));
-                System.out.println(countryKey+", "+countries.get(countryKey));
+            // CHECK IF FILE EXISTS
+            String filePath = "./paises_del_mundo_[S8].txt";
+            File file=new File(filePath);
+            if(!file.exists()){
+                System.out.println("File "+ filePath +" doesn't exist. Exiting program...");
+                System.exit(1); // EXIT WITH ERRORS
+            } else {
+                s = new Scanner(new BufferedReader(new FileReader(filePath)));
+                s.useDelimiter("\r\n");
+                while (s.hasNext()) {
+                    String formattedText = s.next();
+                    formattedText = formattedText.toLowerCase(); // Error control
+                    //System.out.println(formattedText); // DEBUGGING
+                    String[] elements = formattedText.split(",");
+                    String countryKey = elements[0].replace("\"", "");
+                    countries.put(countryKey, elements[1].replace("\"", "") + "," + elements[5].replace("\"", ""));
+                    System.out.println(countryKey + ", " + countries.get(countryKey));
+                }
             }
         } finally {
             if (s != null) {
