@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class LecturaDatos {
     public static Map showFileContent() throws IOException{
+        String bFichero = "paises_del_mundo_[S8].txt";
+        File fichero = new File(bFichero);
+        if (fichero.exists()) {
+            System.out.println("el fichero existe");
         Map<String,String> countries = new HashMap<String,String>();
         Scanner s =null;
         try {
@@ -34,9 +38,11 @@ public class LecturaDatos {
         } finally {
             if (s != null) {
                 s.close();
-            }
-        }
-        return countries;
+            }}
+        
+        }else
+            System.out.println("el fichero no existe");
+            return countries;
     }
     public static boolean countrySearch(Map<String,String> countries) throws IOException{
         java.util.Scanner scanner = new Scanner(System.in);
